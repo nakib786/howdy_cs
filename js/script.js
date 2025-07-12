@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize moving borders
     initMovingBorders();
+    
+    // Initialize share button
+    initShareButton();
 });
 
 /**
@@ -314,5 +317,41 @@ function initMovingBorders() {
             borderElement.style.setProperty('--x', '50%');
             borderElement.style.setProperty('--y', '50%');
         });
+    });
+} 
+
+/**
+ * Initialize the share button functionality
+ */
+function initShareButton() {
+    const shareButton = document.getElementById('shareBtn');
+    
+    if (!shareButton) return;
+    
+    shareButton.addEventListener('click', async () => {
+        try {
+            // Check if the Web Share API is available
+            if (navigator.share) {
+                await navigator.share({
+                    title: 'Howdy Cafe',
+                    text: 'Check out Howdy Cafe - A culinary fusion experience in Williams Lake, BC',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support the Web Share API
+                // Create a temporary input to copy the URL
+                const tempInput = document.createElement('input');
+                tempInput.value = window.location.href;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                
+                // Show a message that the URL was copied
+                alert('Link copied to clipboard! Share it with your friends.');
+            }
+        } catch (error) {
+            console.error('Error sharing:', error);
+        }
     });
 } 

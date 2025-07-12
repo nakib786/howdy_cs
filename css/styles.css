@@ -520,24 +520,40 @@ button.loading .btn-loading {
 /* Social Links */
 .social-links {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
     margin-bottom: 3rem;
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards 1.5s;
 }
 
+.social-links h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #4285F4; /* Google blue color */
+    text-align: center;
+}
+
+.social-links .links-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
 .social-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    background: #4285F4; /* Google blue color */
     color: var(--white);
     transition: all var(--transition-medium);
-    box-shadow: 0 4px 10px rgba(98, 0, 234, 0.2);
+    box-shadow: 0 4px 10px rgba(66, 133, 244, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -549,7 +565,7 @@ button.loading .btn-loading {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--secondary-light), var(--secondary));
+    background: #3367D6; /* Darker blue on hover */
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 0;
@@ -571,6 +587,33 @@ button.loading .btn-loading {
 }
 
 .social-link:hover .icon {
+    transform: scale(1.2);
+}
+
+.social-link.share-btn {
+    cursor: pointer;
+    border: none;
+    background: #4285F4;
+    transition: all var(--transition-medium);
+}
+
+.social-link.share-btn:focus {
+    outline: none;
+}
+
+.social-link.share-btn:active {
+    transform: scale(0.95);
+}
+
+.google-business-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover .google-business-icon {
     transform: scale(1.2);
 }
 
