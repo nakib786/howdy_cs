@@ -9,6 +9,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="apple-touch-icon" href="images/favicon.svg">
+    <meta name="theme-color" content="#6200ea">
+    <style>
+        /* Emergency fix for red border */
+        * {
+            border: none !important;
+            outline: none !important;
+        }
+        body, div, header, main, footer, .container, .content, .logo-container {
+            border: none !important;
+            outline: none !important;
+        }
+    </style>
 </head>
 <body>
     <div class="maple-leaves">
@@ -28,7 +41,6 @@
 
         <main>
             <div class="content">
-                <h1 class="coming-soon">Coming Soon</h1>
                 <div class="tagline">
                     <span class="red">Proudly</span> Built in <span class="red">Canada</span>
                 </div>
@@ -37,28 +49,51 @@
                     dance with Canadian ingredients in Williams Lake, BC.
                 </p>
 
-                <div class="newsletter">
-                    <h2>Stay Updated</h2>
-                    <p>Be the first to know when we launch!</p>
-                    <form id="newsletterForm">
-                        <div class="form-group">
-                            <input 
-                                type="email" 
-                                id="emailInput" 
-                                placeholder="Enter your email" 
-                                required
-                            >
-                            <button type="submit" id="subscribeBtn">
-                                <span class="btn-text">Subscribe</span>
-                                <span class="btn-loading">
-                                    <svg class="spinner" viewBox="0 0 50 50">
-                                        <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-                                    </svg>
-                                </span>
-                            </button>
-                        </div>
-                        <div class="subscription-status" id="subscriptionStatus"></div>
-                    </form>
+                <div class="newsletter moving-border-container">
+                    <div class="moving-border"></div>
+                    <div class="moving-border-content">
+                        <h2>Stay Updated</h2>
+                        <p>Be the first to know when we launch!</p>
+                        <form id="newsletterForm">
+                            <div class="form-group">
+                                <input 
+                                    type="email" 
+                                    id="emailInput" 
+                                    placeholder="Enter your email" 
+                                    required
+                                >
+                                <button type="submit" id="subscribeBtn">
+                                    <span class="btn-text">Subscribe</span>
+                                    <span class="btn-loading">
+                                        <svg class="spinner" viewBox="0 0 50 50">
+                                            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="subscription-status" id="subscriptionStatus"></div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="about-section moving-border-container">
+                    <div class="moving-border"></div>
+                    <div class="moving-border-content">
+                        <h2>About Howdy Cafe</h2>
+                        <p>
+                            At Howdy Cafe, we're passionate about creating a unique dining experience that 
+                            celebrates the rich culinary traditions of Pakistan while embracing the fresh, 
+                            local ingredients of beautiful British Columbia.
+                        </p>
+                        <p>
+                            Our menu is thoughtfully crafted to bring you authentic flavors with a Canadian twist, 
+                            served in a warm and welcoming atmosphere that makes everyone feel at home.
+                        </p>
+                        <p>
+                            We can't wait to welcome you to our table and share our love for food, community, 
+                            and cultural fusion.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="map-section">
@@ -90,6 +125,12 @@
                     <a href="https://x.com/howdycafe" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (formerly Twitter)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1200 1227" fill="none" class="icon">
                             <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:hello@howdycafe.ca" class="social-link" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
                     </a>
                 </div>

@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add modern tech effects
     initModernEffects();
+    
+    // Initialize moving borders
+    initMovingBorders();
 });
 
 /**
@@ -249,14 +252,10 @@ function addParallaxEffect() {
  * Animate gradient text for headings
  */
 function animateGradientText() {
-    const headings = document.querySelectorAll('h1, h2');
+    const headings = document.querySelectorAll('h2');
     
     headings.forEach(heading => {
-        if (heading.classList.contains('coming-soon')) {
-            // Add animated gradient to coming soon text
-            heading.style.backgroundSize = '200% auto';
-            heading.style.animation = 'gradientFlow 5s ease infinite';
-        }
+        heading.classList.add('gradient-text');
     });
 }
 
@@ -265,16 +264,55 @@ function animateGradientText() {
  */
 function addCardHoverEffect() {
     const newsletterCard = document.querySelector('.newsletter');
+    const aboutCard = document.querySelector('.about-section');
     
     if (newsletterCard) {
         newsletterCard.addEventListener('mouseenter', () => {
-            newsletterCard.style.transform = 'translateY(-5px)';
-            newsletterCard.style.boxShadow = '0 20px 40px rgba(50, 50, 93, 0.12), 0 8px 20px rgba(0, 0, 0, 0.1)';
+            newsletterCard.classList.add('card-hover');
         });
         
         newsletterCard.addEventListener('mouseleave', () => {
-            newsletterCard.style.transform = 'translateY(0)';
-            newsletterCard.style.boxShadow = '';
+            newsletterCard.classList.remove('card-hover');
         });
     }
+    
+    if (aboutCard) {
+        aboutCard.addEventListener('mouseenter', () => {
+            aboutCard.classList.add('card-hover');
+        });
+        
+        aboutCard.addEventListener('mouseleave', () => {
+            aboutCard.classList.remove('card-hover');
+        });
+    }
+}
+
+/**
+ * Initialize moving border effect
+ */
+function initMovingBorders() {
+    const movingBorderElements = document.querySelectorAll('.moving-border-container');
+    
+    movingBorderElements.forEach(container => {
+        const borderElement = container.querySelector('.moving-border');
+        
+        if (!borderElement) return;
+        
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const xPercent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            const yPercent = Math.max(0, Math.min(100, (y / rect.height) * 100));
+            
+            borderElement.style.setProperty('--x', `${xPercent}%`);
+            borderElement.style.setProperty('--y', `${yPercent}%`);
+        });
+        
+        container.addEventListener('mouseleave', () => {
+            borderElement.style.setProperty('--x', '50%');
+            borderElement.style.setProperty('--y', '50%');
+        });
+    });
 } 
